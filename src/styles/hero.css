@@ -1,0 +1,145 @@
+.hero-section {
+  display: flex;
+  gap: 0px;
+  /* padding: 7px; */
+  background: #0f0f0f;
+  color: white;
+}
+
+/* LEFT */
+.hero-left {
+  position: relative;
+  flex: 2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hero-left img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* padding: 20px; */
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+.hero-overlay h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.hero-overlay p {
+  color: #aaa;
+}
+
+.stars {
+  color: gold;
+  margin: 5px 0;
+}
+
+.hero-actions {
+    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  /* margin-top: 10px; */
+}
+
+.btn-details {
+  background: red;
+  border: none;
+  margin-bottom: 0%;
+  padding: 8px 14px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-details:hover {
+  background: #ff2e2e;
+}
+
+.year {
+  color: #bbb;
+}
+
+.badge {
+  /* border: 1px solid #00aaff; */
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #ff1e1e;
+}
+
+/* RIGHT (SCROLL) */
+.hero-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.film-item {
+  display: flex;
+  gap: 10px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.film-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.film-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.film-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.film-info button {
+  margin-top: 5px;
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.film-info button:hover {
+  text-decoration: underline;
+}
+
+/* SCROLL STYLE */
+.hero-right::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hero-right::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+.hero-right::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
