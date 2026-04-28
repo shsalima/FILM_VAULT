@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   background: #0b0b0b;
   font-family: 'Segoe UI', sans-serif;
   color: white;
@@ -13,7 +14,8 @@ body {
 
 .header {
   border-radius: 15px;
-  padding: 20px;
+  margin: 0;
+  /* padding: 20px; */
 }
 
 
@@ -96,7 +98,7 @@ body {
   box-shadow: 0 0 5px #ff1e1e;
 }
 
-/* 🧊 PLACEHOLDER */
+
 .filter input::placeholder {
   color: #888;
 }
