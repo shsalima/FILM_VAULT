@@ -1,7 +1,8 @@
 import filmsData from "../data/filmsData";
 import "../styles/hero.css";
 
-export default function Hero({ topMovie, allMovies }) {
+export default function Hero({ topMovie, allMovies ,onSelect}) {
+   const topThree = [...allMovies]
   if (!topMovie) return null;
 
  
@@ -10,6 +11,13 @@ export default function Hero({ topMovie, allMovies }) {
     <section className="hero-section">
 
       <div className="hero-left">
+           {/* {topThree.map((film, index) => (
+          <div 
+            className="top-card" 
+            key={film.id} 
+            onClick={() => onSelect(film)}
+          > */}
+        
         <img src={topMovie.image} alt={topMovie.titre} />
 
         <div className="hero-overlay">
@@ -31,6 +39,8 @@ export default function Hero({ topMovie, allMovies }) {
              </div>
           </div>
         </div>
+        {/* </div>
+         ))} */}
       </div>
 
      <div className="hero-right">

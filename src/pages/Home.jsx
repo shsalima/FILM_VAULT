@@ -6,6 +6,8 @@ import filmsData from "../data/filmsData";
 import FilmsCatalog from "../components/FilmsCatalog";
 import DetailsFilms from "../components/DetailsFilms";
 import AjouterFilm from "../components/AjouterFilm";
+import TopMovies from "../components/TopsFilm";
+import Footer from "../components/Footer";
 
 
 
@@ -47,7 +49,8 @@ const [isModalOpen, setIsModalOpen] = useState(false);
     return(
         <div className="home-div">
             <Header onOpenModal={() => setIsModalOpen(true)}/>
-            <Hero topMovie={topRatedMovie} allMovies={films}/>
+            <Hero topMovie={topRatedMovie} allMovies={films} onSelect={openDetails}/>
+            <TopMovies movies={films} onSelect={openDetails}/>
             <FilmsCatalog movies={films}  onSelect={openDetails} />
      
             <DetailsFilms film={selectedFilm} 
@@ -59,6 +62,9 @@ const [isModalOpen, setIsModalOpen] = useState(false);
             <AjouterFilm  isOpen={isModalOpen} 
   onClose={() => setIsModalOpen(false)} 
   onAdd={handleAddMovie}/>
+
+
+        <Footer/>
           
            
 
