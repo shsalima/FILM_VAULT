@@ -1,6 +1,6 @@
 // components/AddMovieModal.jsx
 import { useState } from "react";
-import "../styles/modal.css";
+import "../styles/addFilm.css";
 
 export default function AjouterFilm({ isOpen, onClose, onAdd }) {
   const [formData, setFormData] = useState({
