@@ -40,5 +40,8 @@ export default function DetailsFilms({ film, isOpen, onClose, onDelete }) {
         </div>
       </div>
     </div>
-  );
+  )
+
+
+  // sba7 sab7 mbaw9 kan
 }

@@ -4,13 +4,11 @@
   gap: 25px;
   margin-top: 20px;
   
-  /* هاد السطر هو السر: كيعطي للـ Hero ارتفاع محدد باش ما تخرجش على الشاشة */
   height: 75vh; 
-  max-height: 550px; /* باش ما تجيش عريضة بزاف ف الشاشات الكبار */
+  max-height: 550px; 
 }
 
-/* الجهة اليسرى */
-/* الجهة اليسرى */
+
 .hero-left {
   position: relative;
   border-radius: 15px;
@@ -23,35 +21,35 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  position: absolute; /* الصورة كتولي خلفية */
+  position: absolute; 
   top: 0;
   left: 0;
-  z-index: 1; /* الصورة لتحت */
+  z-index: 1; 
 }
 
 .hero-overlay {
-  position: absolute; /* Overlay فوق الصورة */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* البيانات فوق الصورة */
+  z-index: 2;
   
-  /* تدرج أسود باش يبان الكتابة بيضاء وواضحة */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.2) 60%, transparent);
   
   padding: 40px;
   box-sizing: border-box;
   
-  /* توزيع البيانات وسط الـ Overlay */
+ 
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* كيهبط البيانات لتحت شوية كيف Figma */
-  gap: 15px;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between; 
+  gap: 30px;
 }
 
 .hero-overlay h2 {
-  font-size: 3rem; /* عنوان كبير */
+  font-size: 3rem; 
   margin: 0;
   text-transform: uppercase;
   font-weight: 800;
@@ -59,26 +57,40 @@
 
 .hero-overlay p {
   font-size: 1.1rem;
-  color: #ddd;
-  max-width: 80%; /* باش ما يجيش السطر طويل بزاف */
+  color: #ff1e1e;
+  max-width: 80%;
+  font-weight: bold; 
   margin: 0;
+}
+.hero-overlay .year{
+  font-size: 1.8rem;
+   color: #fff;
+ 
+
+  font-weight: bold; 
+  
 }
 
 .hero-bottom {
+  flex-direction: column;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  gap: 9px;
 }
 
-/* التعديلات الأخرى ف اليمين كتبقى هي هي */
+.hero-bottom .badge {
+   color: #ff1e1e;
 
-/* الجهة اليمنى */
+}
+
+
 .hero-right {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  height: 100%; /* كتاخد الارتفاع كامل */
+  height: 100%; 
 }
 
 .film-item {
@@ -89,16 +101,14 @@
   padding: 10px;
   border-radius: 12px;
   
-  /* كتقسم الارتفاع ديال الجيهة ليمن على 3 بالتساوي */
   flex: 1; 
-  min-height: 0; /* مهمة بزاف باش الـ flexbox يحترم الارتفاع اللي عطيناه */
+  min-height: 0; 
   overflow: hidden;
 }
 
 .img-container {
   width: 100px;
-  height: 100%; /* الصورة كتاخد الطول ديال الكارتة */
-  flex-shrink: 0; /* باش الصورة ما تصغاروش بزاف */
+  height: 100%; 
 }
 
 .img-container img {
@@ -108,7 +118,6 @@
   border-radius: 8px;
 }
 
-/* تصغير العناوين شوية باش يقدنا البلاصة بلا سكرول */
 .film-info h3 {
   margin: 0;
   font-size: 16px;

@@ -32,11 +32,11 @@ export default function Hero({ topMovie, allMovies ,onSelect}) {
             </div>
 
            <div className="hero-bottom">
-             <button className="btn-details">Détails</button>
-             <div className="hero-actions">
+             {/* <button className="btn-details">Détails</button> */}
+            
                 <span className="year">{topMovie.annee}</span>
                 <span className="badge">LE MIEUX NOTÉ</span>
-             </div>
+          
           </div>
         </div>
         {/* </div>

@@ -1,4 +1,4 @@
-// components/AddMovieModal.jsx
+import logo from "/public/logo-removebg-preview.png"
 import { useState } from "react";
 import "../styles/addFilm.css";
 
@@ -15,10 +15,9 @@ export default function AjouterFilm({ isOpen, onClose, onAdd }) {
   return (
     <div className="modal-overlay">
       <div className="modal-card">
-        {/* Header ديال الـ Modal */}
         <div className="modal-header">
           <div className="header-icon-title">
-             <div className="red-icon"><i className="ri-film-fill"></i></div>
+             <div className="red-icon"> <img src={logo}/></div>
              <div className="header-text">
                 <h2>Développer le coffre-fort</h2>
                 <p>Ajoutez un nouveau chef-d'œuvre à votre collection.</p>
@@ -29,7 +28,6 @@ export default function AjouterFilm({ isOpen, onClose, onAdd }) {
 
         <form className="modal-form">
           <div className="form-grid">
-            {/* الجهة اليسرى */}
             <div className="form-left">
               <label>TITRE DU FILM</label>
               <input type="text" placeholder="e.g. Inception" />
@@ -52,7 +50,6 @@ export default function AjouterFilm({ isOpen, onClose, onAdd }) {
               <input type="text" placeholder="https://images.unsplash.com/..." />
             </div>
 
-            {/* الجهة اليمنى */}
             <div className="form-right">
               <label>DESCRIPTION</label>
               <textarea placeholder="Résumé du film..."></textarea>
