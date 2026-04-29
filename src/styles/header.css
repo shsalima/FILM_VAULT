@@ -39,7 +39,6 @@ body {
   /* حيد margin-bottom من هنا */
 }
 
-/* بما أن الـ NavBar ولات fixed، خاصنا نزيدو padding للـ Body باش الـ Hero ما يتغطاش */
 body {
   margin: 0;
   padding: 0; /* رجعها 0 */

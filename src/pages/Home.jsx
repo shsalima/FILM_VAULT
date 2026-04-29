@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import "../styles/home.css"
 import filmsData from "../data/filmsData";
+import FilmsCatalog from "../components/FilmsCatalog";
 
 
 
@@ -15,7 +16,7 @@ export default function Home(){
     useEffect(() => {
         localStorage.setItem("films", JSON.stringify(films));
     }, [films]);
-    
+
     const topRatedMovie = [...films].sort((a, b) => b.note - a.note)[0];
 
 
@@ -24,6 +25,8 @@ export default function Home(){
         <div className="home-div">
             <Header/>
             <Hero topMovie={topRatedMovie} allMovies={films}/>
+            <FilmsCatalog movies={films} />
+          
            
 
         </div>
