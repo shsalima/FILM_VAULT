@@ -1,7 +1,7 @@
-// components/DetailsPopup.jsx
+
 import "../styles/details.css";
 
-export default function DetailsPopup({ film, isOpen, onClose, onDelete, onEdit }) {
+export default function DetailsFilms({ film, isOpen, onClose, onDelete, onEdit }) {
   if (!isOpen || !film) return null;
 
   return (
