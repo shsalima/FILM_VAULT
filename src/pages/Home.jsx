@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import "../styles/home.css"
 import filmsData from "../data/filmsData";
 import FilmsCatalog from "../components/FilmsCatalog";
+import DetailsFilms from "../components/DetailsFilms";
 
 
 
@@ -18,6 +19,21 @@ export default function Home(){
     }, [films]);
 
     const topRatedMovie = [...films].sort((a, b) => b.note - a.note)[0];
+           
+    const openDetails = (film) => {
+    setSelectedFilm(film);
+    setIsDetailsOpen(true);
+};
+
+const [selectedFilm, setSelectedFilm] = useState(null);
+const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
+    const handleDelete = (id) => {
+    if(window.confirm("Bghiti tmse7 had l'film?")) {
+        setFilms(films.filter(f => f.id !== id));
+        setIsDetailsOpen(false);
+    }
+};
 
 
 
@@ -25,7 +41,12 @@ export default function Home(){
         <div className="home-div">
             <Header/>
             <Hero topMovie={topRatedMovie} allMovies={films}/>
-            <FilmsCatalog movies={films} />
+            <FilmsCatalog movies={films}  onSelect={openDetails} />
+     
+            <DetailsFilms film={selectedFilm} 
+  isOpen={isDetailsOpen} 
+  onClose={() => setIsDetailsOpen(false)}
+  onDelete={handleDelete}/>
           
            
 

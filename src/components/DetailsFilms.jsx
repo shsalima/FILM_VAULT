@@ -1,7 +1,7 @@
 
 import "../styles/details.css";
 
-export default function DetailsFilms({ film, isOpen, onClose, onDelete, onEdit }) {
+export default function DetailsFilms({ film, isOpen, onClose, onDelete }) {
   if (!isOpen || !film) return null;
 
   return (
