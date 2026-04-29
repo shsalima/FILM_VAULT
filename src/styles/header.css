@@ -8,7 +8,10 @@ body {
 
 
 .header-div {
-  
+  /* هاد السطر هو اللي غايحل المشكل */
+  /* بما أن الـ NavBar فيها تقريبا 70px لـ 80px ديال الارتفاع */
+  /* وحنا بغينا 20px ديال الفراغ، غانديرو padding-top كلي */
+  padding-top: 100px; 
 }
 
 
@@ -20,9 +23,27 @@ body {
 
 
 .navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 50px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333;
+  box-sizing: border-box;
+  /* حيد margin-bottom من هنا */
+}
+
+/* بما أن الـ NavBar ولات fixed، خاصنا نزيدو padding للـ Body باش الـ Hero ما يتغطاش */
+body {
+  margin: 0;
+  padding: 0; /* رجعها 0 */
+  background: #0b0b0b;
 }
 
 
@@ -30,11 +51,19 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+ 
 }
 
 .logo-tritre h1 {
-  font-size: 22px;
+  font-size: 29px;
   letter-spacing: 2px;
+}
+/* AMERICAN */
+.logo-tritre img {
+  
+   width: 90px;
+    height: auto;
+    object-fit: cover;
 }
 
 .logo-tritre span {
@@ -44,36 +73,45 @@ body {
 
 .navBar button {
     background: #ff1e1e;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 20px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: 0.3s;
 }
 
 .navBar button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px #ff1e1e;
+  /* transform: scale(1.05);
+  box-shadow: 0 0 10px #ff1e1e; */
+   background: #ff0000;
 }
 
 
 .div-filter {
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  width: 100%;
+  /* تأكد أن margin-top هنا كاين باش تزيد تبعدها الا بغيتي */
+  margin-top: 0; 
   padding: 20px;
   border-radius: 15px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 30, 30, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
   backdrop-filter: blur(10px);
+  box-sizing: border-box;
 }
 
 
 .div-filter h2 {
-  font-size: 14px;
+  font-size: 17px;
   color: #ff1e1e;
   margin-bottom: 10px;
   letter-spacing: 1px;
 }
 
+.div-filter .ri-filter-2-line{
+  font-size: 22px;
+}
 
 .filter {
   display: flex;

@@ -1,60 +1,50 @@
 import filmsData from "../data/filmsData";
 import "../styles/hero.css";
 
-export default function Hero() {
+export default function Hero({ topMovie, allMovies }) {
+  if (!topMovie) return null;
 
-  const filmTop = {
-    id: 1,
-    titre: "Interstellar",
-    description: "Voyage spatial pour sauver l'humanité",
-    annee: 2014,
-    genre: "Science-Fiction",
-    realisateur: "Christopher Nolan",
-    image: "https://image.tmdb.org/t/p/w500/nCbkOyOMTEwlEV0LtCOvCnwEONA.jpg",
-    note: 5,
-  };
+ 
 
   return (
     <section className="hero-section">
 
       <div className="hero-left">
-        <img src={filmTop.image} alt={filmTop.titre} />
+        <img src={topMovie.image} alt={topMovie.titre} />
 
         <div className="hero-overlay">
-            <div>
+            <div className="info">
 
-          <h2>{filmTop.titre}</h2>
-          <p>{filmTop.genre}</p>
+          <h2>{topMovie.titre}</h2>
+          <p>{topMovie.genre}</p>
 
           <div className="stars">
-            {"⭐".repeat(filmTop.note)}
+           {"⭐".repeat(topMovie.note)}
           </div>
             </div>
 
-            <button className="btn-details">Détails</button>
-          <div className="hero-actions">
-            <span className="year">{filmTop.annee}</span>
-            <span className="badge">LE MIEUX NOTÉ</span>
+           <div className="hero-bottom">
+             <button className="btn-details">Détails</button>
+             <div className="hero-actions">
+                <span className="year">{topMovie.annee}</span>
+                <span className="badge">LE MIEUX NOTÉ</span>
+             </div>
           </div>
         </div>
       </div>
 
-      <div className="hero-right">
-        {filmsData.map((film) => (
+     <div className="hero-right">
+        {allMovies.slice(0, 3).map((film) => (
           <div className="film-item" key={film.id}>
-            
-            <img src={film.image} alt={film.titre} />
-
+            <div className="img-container">
+                <img src={film.image} alt={film.titre} />
+                <i className="ri-play-circle-fill play-icon"></i> 
+            </div>
             <div className="film-info">
               <h3>{film.titre}</h3>
-
-              <div className="stars">
-                {"⭐".repeat(film.note)}
-              </div>
-
-              <button>Détails</button>
+              <div className="stars">{"⭐".repeat(film.note)}</div>
+              <button className="details-link">Details</button>
             </div>
-
           </div>
         ))}
       </div>

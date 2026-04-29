@@ -1,145 +1,116 @@
 .hero-section {
-  display: flex;
-  gap: 0px;
-  /* padding: 7px; */
-  background: #0f0f0f;
-  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 25px;
+  margin-top: 20px;
+  
+  /* هاد السطر هو السر: كيعطي للـ Hero ارتفاع محدد باش ما تخرجش على الشاشة */
+  height: 75vh; 
+  max-height: 550px; /* باش ما تجيش عريضة بزاف ف الشاشات الكبار */
 }
 
-/* LEFT */
+/* الجهة اليسرى */
+/* الجهة اليسرى */
 .hero-left {
   position: relative;
-  flex: 2;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
+  height: 100%;
 }
 
 .hero-left img {
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  position: absolute; /* الصورة كتولي خلفية */
+  top: 0;
+  left: 0;
+  z-index: 1; /* الصورة لتحت */
 }
 
 .hero-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  position: absolute;
-  bottom: 0;
+  position: absolute; /* Overlay فوق الصورة */
+  top: 0;
+  left: 0;
   width: 100%;
-  /* padding: 20px; */
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  height: 100%;
+  z-index: 2; /* البيانات فوق الصورة */
+  
+  /* تدرج أسود باش يبان الكتابة بيضاء وواضحة */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.2) 60%, transparent);
+  
+  padding: 40px;
+  box-sizing: border-box;
+  
+  /* توزيع البيانات وسط الـ Overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* كيهبط البيانات لتحت شوية كيف Figma */
+  gap: 15px;
 }
 
 .hero-overlay h2 {
+  font-size: 3rem; /* عنوان كبير */
   margin: 0;
-  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 .hero-overlay p {
-  color: #aaa;
+  font-size: 1.1rem;
+  color: #ddd;
+  max-width: 80%; /* باش ما يجيش السطر طويل بزاف */
+  margin: 0;
 }
 
-.stars {
-  color: gold;
-  margin: 5px 0;
-}
-
-.hero-actions {
-    flex-direction: column;
+.hero-bottom {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  /* margin-top: 10px; */
+  margin-top: 10px;
 }
 
-.btn-details {
-  background: red;
-  border: none;
-  margin-bottom: 0%;
-  padding: 8px 14px;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-}
+/* التعديلات الأخرى ف اليمين كتبقى هي هي */
 
-.btn-details:hover {
-  background: #ff2e2e;
-}
-
-.year {
-  color: #bbb;
-}
-
-.badge {
-  /* border: 1px solid #00aaff; */
-  padding: 5px 10px;
-  font-size: 12px;
-  color: #ff1e1e;
-}
-
-/* RIGHT (SCROLL) */
+/* الجهة اليمنى */
 .hero-right {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 15px;
-
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 5px;
+  height: 100%; /* كتاخد الارتفاع كامل */
 }
 
 .film-item {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
   background: #1a1a1a;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 12px;
+  
+  /* كتقسم الارتفاع ديال الجيهة ليمن على 3 بالتساوي */
+  flex: 1; 
+  min-height: 0; /* مهمة بزاف باش الـ flexbox يحترم الارتفاع اللي عطيناه */
   overflow: hidden;
 }
 
-.film-item img {
+.img-container {
   width: 100px;
-  height: 100px;
+  height: 100%; /* الصورة كتاخد الطول ديال الكارتة */
+  flex-shrink: 0; /* باش الصورة ما تصغاروش بزاف */
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
-.film-info {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
+/* تصغير العناوين شوية باش يقدنا البلاصة بلا سكرول */
 .film-info h3 {
   margin: 0;
   font-size: 16px;
-}
-
-.film-info button {
-  margin-top: 5px;
-  background: transparent;
-  border: none;
-  color: red;
-  cursor: pointer;
-}
-
-.film-info button:hover {
-  text-decoration: underline;
-}
-
-/* SCROLL STYLE */
-.hero-right::-webkit-scrollbar {
-  width: 6px;
-}
-
-.hero-right::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 10px;
-}
-
-.hero-right::-webkit-scrollbar-thumb:hover {
-  background: red;
+  line-height: 1.2;
 }
