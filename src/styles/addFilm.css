@@ -1,75 +1,149 @@
-/* styles/modal.css */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 2000;
   backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
 }
 
-.modal-content {
+.modal-card {
   background: #1a1a1a;
-  padding: 30px;
-  border-radius: 15px;
   width: 90%;
-  max-width: 600px;
-  border: 1px solid #ff1e1e;
+  max-width: 850px;
+  border-radius: 30px; /* زوايا دائرية كبيرة كيف الصورة */
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.header-icon-title {
+  display: flex;
+  gap: 20px;
+}
+
+.red-icon {
+  background: #ff1e1e;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  font-size: 24px;
 }
 
-.modal-header h2 {
+.header-text h2 {
   color: #ff1e1e;
-  font-size: 1.2rem;
+  margin: 0;
+  font-size: 22px;
 }
 
-.close-btn {
-  background: none;
-  border: none;
+.header-text p {
+  color: #888;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+}
+
+.close-x {
+  background: #333;
   color: white;
-  font-size: 2rem;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   cursor: pointer;
+  font-size: 20px;
 }
 
+/* تقسيم الفورميلير */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 30px;
 }
 
-.modal-content input, .modal-content textarea {
-  width: 100%;
-  padding: 12px;
-  background: #0b0b0b;
-  border: 1px solid #333;
-  color: white;
-  border-radius: 8px;
-}
-
-.modal-content textarea {
-  height: 100px;
-  margin-bottom: 15px;
-}
-
-.save-btn {
-  width: 100%;
-  background: #ff1e1e;
-  color: white;
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
+label {
+  display: block;
+  color: #666;
+  font-size: 11px;
   font-weight: bold;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+input, textarea {
+  width: 100%;
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 12px 15px;
+  color: white;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+textarea {
+  height: 140px;
+  resize: none;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.col { flex: 1; }
+
+.actors-input {
+  display: flex;
+  gap: 0;
+}
+
+.actors-input input {
+  border-radius: 12px 0 0 12px;
+  margin-bottom: 0;
+}
+
+.btn-add-actor {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 0 15px;
+  border-radius: 0 12px 12px 0;
+  cursor: pointer;
+  height: 43px;
+}
+
+.rating-stars-input {
+  background: #252525;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  gap: 10px;
+  font-size: 24px;
+}
+
+.rating-stars-input i { color: #444; cursor: pointer; }
+.rating-stars-input i.active { color: #ffb800; }
+
+.btn-submit-main {
+  background: #ff1e1e;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 20px;
   cursor: pointer;
 }

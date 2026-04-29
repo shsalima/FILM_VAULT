@@ -3,55 +3,80 @@ import { useState } from "react";
 import "../styles/addFilm.css";
 
 export default function AjouterFilm({ isOpen, onClose, onAdd }) {
+
+
   const [formData, setFormData] = useState({
-    titre: "",
-    description: "",
-    annee: "",
-    genre: "",
-    realisateur: "",
-    acteurs: "",
-    image: "",
-    trailer: "",
-    note: 1,
+    titre: "", description: "", annee: "2026", genre: "Action",
+    directeur: "", image: "", note: 0, acteurs: []
   });
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // تحويل acteurs من string لـ Array كيفما مطلوب
-    const newMovie = {
-      ...formData,
-      id: Date.now(),
-      acteurs: formData.acteurs.split(",").map(item => item.trim()),
-      note: Number(formData.note)
-    };
-    onAdd(newMovie);
-    onClose();
-    // مسح الفورميلير بعد الإضافة
-    setFormData({ titre: "", description: "", annee: "", genre: "", realisateur: "", acteurs: "", image: "", trailer: "", note: 1 });
-  };
-
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
+      <div className="modal-card">
+        {/* Header ديال الـ Modal */}
         <div className="modal-header">
-          <h2>AJOUTER UN NOUVEAU FILM</h2>
-          <button className="close-btn" onClick={onClose}>&times;</button>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div className="form-grid">
-            <input type="text" placeholder="Titre du film" required onChange={(e) => setFormData({...formData, titre: e.target.value})} />
-            <input type="text" placeholder="Genre" required onChange={(e) => setFormData({...formData, genre: e.target.value})} />
-            <input type="number" placeholder="Année" required onChange={(e) => setFormData({...formData, annee: e.target.value})} />
-            <input type="text" placeholder="Réalisateur" required onChange={(e) => setFormData({...formData, realisateur: e.target.value})} />
-            <input type="text" placeholder="Image URL" required onChange={(e) => setFormData({...formData, image: e.target.value})} />
-            <input type="text" placeholder="Trailer URL" required onChange={(e) => setFormData({...formData, trailer: e.target.value})} />
-            <input type="number" min="1" max="5" placeholder="Note (1-5)" required onChange={(e) => setFormData({...formData, note: e.target.value})} />
-            <input type="text" placeholder="Acteurs (séparés par virgule)" onChange={(e) => setFormData({...formData, acteurs: e.target.value})} />
+          <div className="header-icon-title">
+             <div className="red-icon"><i className="ri-film-fill"></i></div>
+             <div className="header-text">
+                <h2>Développer le coffre-fort</h2>
+                <p>Ajoutez un nouveau chef-d'œuvre à votre collection.</p>
+             </div>
           </div>
-          <textarea placeholder="Description" required onChange={(e) => setFormData({...formData, description: e.target.value})}></textarea>
-          <button type="submit" className="save-btn">Enregistrer le film</button>
+          <button className="close-x" onClick={onClose}>&times;</button>
+        </div>
+
+        <form className="modal-form">
+          <div className="form-grid">
+            {/* الجهة اليسرى */}
+            <div className="form-left">
+              <label>TITRE DU FILM</label>
+              <input type="text" placeholder="e.g. Inception" />
+              
+              <div className="row">
+                <div className="col">
+                  <label>ANNÉE</label>
+                  <input type="number" defaultValue="2026" />
+                </div>
+                <div className="col">
+                  <label>GENRE</label>
+                  <input type="text" defaultValue="Action" />
+                </div>
+              </div>
+
+              <label>DIRECTEUR</label>
+              <input type="text" placeholder="Nom du réalisateur" />
+
+              <label>URL DE L'AFFICHE</label>
+              <input type="text" placeholder="https://images.unsplash.com/..." />
+            </div>
+
+            {/* الجهة اليمنى */}
+            <div className="form-right">
+              <label>DESCRIPTION</label>
+              <textarea placeholder="Résumé du film..."></textarea>
+
+              <label>ACTEURS PRINCIPAUX</label>
+              <div className="actors-input">
+                <input type="text" placeholder="Ajouter un acteur..." />
+                <button type="button" className="btn-add-actor">Ajouter</button>
+              </div>
+
+              <label>VOTRE NOTE</label>
+              <div className="rating-stars-input">
+                <i className="ri-star-fill active"></i>
+                <i className="ri-star-fill active"></i>
+                <i className="ri-star-fill active"></i>
+                <i className="ri-star-line"></i>
+                <i className="ri-star-line"></i>
+              </div>
+            </div>
+          </div>
+
+          <div className="form-footer">
+             <button type="submit" className="btn-submit-main">Ajouter au catalogue</button>
+          </div>
         </form>
       </div>
     </div>

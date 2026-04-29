@@ -1,5 +1,5 @@
 import logo from "/public/logo.jpg"
-export default function NavBar(){
+export default function NavBar({ onOpenModal }){
 
     return(
           <nav className="navBar">
@@ -7,7 +7,7 @@ export default function NavBar(){
                     <img src={logo}/>
                     <h1>FILM <span>VAULT</span> </h1>
                 </div>
-                <button>
+                <button onClick={onOpenModal}>
                     <img src="" alt="" />
                    + Ajouter un film
                 </button>

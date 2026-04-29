@@ -5,6 +5,7 @@ import "../styles/home.css"
 import filmsData from "../data/filmsData";
 import FilmsCatalog from "../components/FilmsCatalog";
 import DetailsFilms from "../components/DetailsFilms";
+import AjouterFilm from "../components/AjouterFilm";
 
 
 
@@ -27,6 +28,12 @@ export default function Home(){
 
 const [selectedFilm, setSelectedFilm] = useState(null);
 const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+    const handleAddMovie = (newMovie) => {
+  setFilms([newMovie, ...films]);
+};
 
     const handleDelete = (id) => {
     if(window.confirm("Bghiti tmse7 had l'film?")) {
@@ -39,7 +46,7 @@ const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
     return(
         <div className="home-div">
-            <Header/>
+            <Header onOpenModal={() => setIsModalOpen(true)}/>
             <Hero topMovie={topRatedMovie} allMovies={films}/>
             <FilmsCatalog movies={films}  onSelect={openDetails} />
      
@@ -47,6 +54,11 @@ const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   isOpen={isDetailsOpen} 
   onClose={() => setIsDetailsOpen(false)}
   onDelete={handleDelete}/>
+
+
+            <AjouterFilm  isOpen={isModalOpen} 
+  onClose={() => setIsModalOpen(false)} 
+  onAdd={handleAddMovie}/>
           
            
 
