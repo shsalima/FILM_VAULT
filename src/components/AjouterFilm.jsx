@@ -91,8 +91,8 @@ const handleSubmit = (e) => {
   onChange={handleChange}/>
 
               <label>URL DE L'AFFICHE</label>
-              <input type="text" placeholder="https://images.unsplash.com/..." name="image" // زيدي هادي
-    value={formData.image} // زيدي هادي
+              <input type="text" placeholder="https://images.unsplash.com/..." name="image"
+    value={formData.image} 
     onChange={handleChange}/>
             </div>
 

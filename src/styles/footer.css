@@ -1,4 +1,4 @@
-/* styles/footer.css */
+
 .main-footer {
   margin-top: 80px;
   padding-bottom: 40px;
@@ -26,7 +26,7 @@
 }
 
 .footer-content p span {
-  color: #ff1e1e; /* اسمك باللون الأحمر ديال البروجي */
+  color: #ff1e1e; 
   font-weight: bold;
 }
 

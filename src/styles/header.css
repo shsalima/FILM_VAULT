@@ -8,9 +8,7 @@ body {
 
 
 .header-div {
-  /* هاد السطر هو اللي غايحل المشكل */
-  /* بما أن الـ NavBar فيها تقريبا 70px لـ 80px ديال الارتفاع */
-  /* وحنا بغينا 20px ديال الفراغ، غانديرو padding-top كلي */
+
   padding-top: 100px; 
 }
 
@@ -87,8 +85,8 @@ body {
 
 .div-filter {
   width: 100%;
-  /* تأكد أن margin-top هنا كاين باش تزيد تبعدها الا بغيتي */
-  margin-top: 0; 
+
+  margin-top: 30px; 
   padding: 20px;
   border-radius: 15px;
   background: linear-gradient(

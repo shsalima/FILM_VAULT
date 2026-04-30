@@ -1,4 +1,4 @@
-// components/MovieCatalog.jsx
+
 import "../styles/catalog.css";
 
 export default function FilmsCatalog({ movies, onSelect }) {
