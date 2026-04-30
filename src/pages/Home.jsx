@@ -31,6 +31,8 @@ export default function Home(){
 const [selectedFilm, setSelectedFilm] = useState(null);
 const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 const [isModalOpen, setIsModalOpen] = useState(false);
+const [isEditModalOpen, setIsEditModalOpen] = useState(false); // واش المودال ديال التعديل مفتوح
+const [movieToEdit, setMovieToEdit] = useState(null);
 
 
     const handleAddMovie = (newMovie) => {
@@ -48,10 +50,21 @@ const [isModalOpen, setIsModalOpen] = useState(false);
             const MasqueFilm=films.filter(fl=>fl.id !==id)
             setFilms(MasqueFilm)
             setIsDetailsOpen(false)
-                
-
-
             }
+
+           const handleUpdateFilm=(updateFilm)=>{
+            const updateMovie=films.map(f=>
+                f.id === updateFilm.id? updateFilm:f
+            )
+            setFilms(updateMovie)
+            setIsDetailsOpen(false)
+           } 
+
+           const openEditModal=(film)=>{
+            setMovieToEdit(film)
+            setIsDetailsOpen(false)
+            setIsEditModalOpen(true)
+           }
 
 
 
@@ -65,12 +78,18 @@ const [isModalOpen, setIsModalOpen] = useState(false);
             <DetailsFilms film={selectedFilm} 
   isOpen={isDetailsOpen} 
   onClose={() => setIsDetailsOpen(false)}
-  onDelete={handleDeleteFilm}/>
+  onDelete={handleDeleteFilm}
+  editData={openEditModal}
+  />
 
 
-            <AjouterFilm  isOpen={isModalOpen} 
-  onClose={() => setIsModalOpen(false)} 
-  onAdd={handleAddMovie}/>
+            <AjouterFilm  isOpen={isModalOpen || isEditModalOpen}
+  onClose={() => {
+    setIsModalOpen(false);
+    setIsEditModalOpen(false);
+    setMovieToEdit(null);}}
+  onAdd={movieToEdit ? handleUpdateFilm : handleAddMovie}
+  editData={movieToEdit}/>
 
            
 

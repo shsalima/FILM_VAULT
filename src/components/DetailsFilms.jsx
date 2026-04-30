@@ -1,8 +1,12 @@
 
 import "../styles/details.css";
 
-export default function DetailsFilms({ film, isOpen, onClose, onDelete }) {
+export default function DetailsFilms({ film, isOpen, onClose, onDelete ,editData}) {
   if (!isOpen || !film) return null;
+  const renderStars = (note) => {
+    const n = Math.round(Number(note)) || 0;
+    return "⭐".repeat(Math.max(0, Math.min(n, 5))); // كياخد بين 0 و 5 نجوم
+  };
 
   return (
     <div className="details-overlay">
@@ -17,7 +21,7 @@ export default function DetailsFilms({ film, isOpen, onClose, onDelete }) {
           <div className="details-info">
             <div className="header-info">
                 <h2>{film.titre} <span>({film.annee})</span></h2>
-                <div className="stars">{"⭐".repeat(film.note)}</div>
+{/* <div className="stars">{"⭐".repeat(film.note || 0)}</div> */}
             </div>
             
             <p className="genre-tag">{film.genre}</p>
@@ -29,7 +33,7 @@ export default function DetailsFilms({ film, isOpen, onClose, onDelete }) {
             </div>
 
             <div className="details-actions">
-              <button className="btn-edit" onClick={() => onEdit(film)}>
+              <button className="btn-edit" onClick={() =>  editData(film)}>
                 <i className="ri-edit-line"></i> Modifier
               </button>
               <button className="btn-delete" onClick={() => onDelete(film.id)}>
