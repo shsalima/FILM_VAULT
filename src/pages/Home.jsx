@@ -7,7 +7,8 @@ import FilmsCatalog from "../components/FilmsCatalog";
 import DetailsFilms from "../components/DetailsFilms";
 import AjouterFilm from "../components/AjouterFilm";
 import TopMovies from "../components/TopsFilm";
-import Footer from "../components/Footer";
+
+import Filter from "../components/FilterFiml";
 
 export default function Home() {
   const [films, setFilms] = useState(() => {
@@ -31,6 +32,18 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
+  const [filterCriteria, setFilterCriteria] = useState({
+    titre: "",
+    genre: "",
+    note: ""
+});
+const filteredFilms = films.filter((film) => {
+    return (
+        film.titre.toLowerCase().includes(filterCriteria.titre.toLowerCase()) &&
+        film.genre.toLowerCase().includes(filterCriteria.genre.toLowerCase()) &&
+        (filterCriteria.note === "" || film.note >= Number(filterCriteria.note))
+    );
+});
 
   const handleAddMovie = (newMovie) => {
     setFilms([newMovie, ...films]);
@@ -69,7 +82,12 @@ export default function Home() {
         onOpenModal={() => setIsModalOpen(true)}
         movies={films}
         onSelect={openDetails}
+
+      
+  filterCriteria={filterCriteria} 
+  setFilterCriteria={setFilterCriteria}
       />
+
       <Hero
         topMovie={topRatedMovie}
         allMovies={films}
@@ -77,7 +95,7 @@ export default function Home() {
         onSelect={openDetails}
       />
       <TopMovies movies={films} onSelect={openDetails} />
-      <FilmsCatalog movies={films} onSelect={openDetails} />
+      <FilmsCatalog movies={filteredFilms} onSelect={openDetails} />
 
       <DetailsFilms
         film={selectedFilm}
