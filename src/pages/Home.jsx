@@ -44,6 +44,15 @@ const [isModalOpen, setIsModalOpen] = useState(false);
     }
 };
 
+         const handleDeleteFilm =(id) => {
+            const MasqueFilm=films.filter(fl=>fl.id !==id)
+            setFilms(MasqueFilm)
+            setIsDetailsOpen(false)
+                
+
+
+            }
+
 
 
     return(
@@ -56,12 +65,14 @@ const [isModalOpen, setIsModalOpen] = useState(false);
             <DetailsFilms film={selectedFilm} 
   isOpen={isDetailsOpen} 
   onClose={() => setIsDetailsOpen(false)}
-  onDelete={handleDelete}/>
+  onDelete={handleDeleteFilm}/>
 
 
             <AjouterFilm  isOpen={isModalOpen} 
   onClose={() => setIsModalOpen(false)} 
   onAdd={handleAddMovie}/>
+
+           
 
 
         <Footer/>
