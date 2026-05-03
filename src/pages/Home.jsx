@@ -16,6 +16,18 @@ export default function Home() {
     return savedFilms ? JSON.parse(savedFilms) : filmsData;
   });
 
+  
+  const [selectedFilm, setSelectedFilm] = useState(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+ 
+  const [filterCriteria, setFilterCriteria] = useState({
+    titre: "",
+    genre: "",
+    note: ""
+  });
+
+
   useEffect(() => {
     localStorage.setItem("films", JSON.stringify(films));
   }, [films]);
@@ -27,16 +39,9 @@ export default function Home() {
     setIsDetailsOpen(true);
   };
 
-  const [selectedFilm, setSelectedFilm] = useState(null);
-  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [movieToEdit, setMovieToEdit] = useState(null);
-  const [filterCriteria, setFilterCriteria] = useState({
-    titre: "",
-    genre: "",
-    note: ""
-});
+
+
+
 const filteredFilms = films.filter((film) => {
     return (
         film.titre.toLowerCase().includes(filterCriteria.titre.toLowerCase()) &&
@@ -50,31 +55,13 @@ const filteredFilms = films.filter((film) => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Bghiti tmse7 had l'film?")) {
+    if (window.confirm("met2ked bghity t supprimer  had l'film?")) {
       setFilms(films.filter((f) => f.id !== id));
       setIsDetailsOpen(false);
     }
   };
 
-  const handleDeleteFilm = (id) => {
-    const MasqueFilm = films.filter((fl) => fl.id !== id);
-    setFilms(MasqueFilm);
-    setIsDetailsOpen(false);
-  };
 
-  const handleUpdateFilm = (updateFilm) => {
-    const updateMovie = films.map((f) =>
-      f.id === updateFilm.id ? updateFilm : f,
-    );
-    setFilms(updateMovie);
-    setIsDetailsOpen(false);
-  };
-
-  const openEditModal = (film) => {
-    setMovieToEdit(film);
-    setIsDetailsOpen(false);
-    setIsEditModalOpen(true);
-  };
 
   return (
     <div className="home-div">
@@ -101,19 +88,15 @@ const filteredFilms = films.filter((film) => {
         film={selectedFilm}
         isOpen={isDetailsOpen}
         onClose={() => setIsDetailsOpen(false)}
-        onDelete={handleDeleteFilm}
-        editData={openEditModal}
+        onDelete={handleDelete}
+       
       />
 
       <AjouterFilm
-        isOpen={isModalOpen || isEditModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-          setIsEditModalOpen(false);
-          setMovieToEdit(null);
-        }}
-        onAdd={movieToEdit ? handleUpdateFilm : handleAddMovie}
-        editData={movieToEdit}
+        isOpen={isModalOpen }
+        onClose={() => setIsModalOpen(false)}
+        onAdd={ handleAddMovie}
+
       />
 
   

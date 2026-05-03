@@ -2,7 +2,7 @@ import logo from "/public/logo-removebg-preview.png"
 import { useEffect, useState } from "react";
 import "../styles/addFilm.css";
 
-export default function AjouterFilm({ isOpen, onClose, onAdd , editData}) {
+export default function AjouterFilm({ isOpen, onClose, onAdd }) {
 
 
   const [formData, setFormData] = useState({id: null,
@@ -12,13 +12,20 @@ export default function AjouterFilm({ isOpen, onClose, onAdd , editData}) {
 
 
    useEffect(()=>{
-    if(editData){
-      setFormData(editData)
-    }else{
-      setFormData({id: null,titre:"",description:"",annee: "", genre: "",
-    directeur: "", image: "", note: 0, acteurs: []})
+    if(!isOpen){
+      setFormData({
+        id: null,
+        titre: "",
+        description: "",
+        annee: "2026",
+        genre: "Action",
+        directeur: "",
+        image: "",
+        note: 0,
+        acteurs: []
+      });
     }
-  },[editData,isOpen])
+  }, [isOpen]);
 
 
     if (!isOpen) return null;
@@ -37,9 +44,11 @@ const handleSubmit = (e) => {
   
   const safeNote = Number(formData.note) || 0;
 
-    const filmToSubmit = editData 
-      ? { ...formData, note: safeNote } 
-      : { ...formData, id: Date.now(), note: safeNote }; 
+    const filmToSubmit = { 
+      ...formData, 
+      id: Date.now(), 
+      note: safeNote 
+    };
     
     onAdd(filmToSubmit);
     onClose();
@@ -55,7 +64,7 @@ const handleSubmit = (e) => {
           <div className="header-icon-title">
              <div className="red-icon"> <img src={logo}/></div>
              <div className="header-text">
-                <h2>{editData ? "Modifier le film" : "Développer le coffre-fort"}</h2>
+                <h2>Développer le coffre-fort</h2>
                 <p>Ajoutez un nouveau chef-d'œuvre à votre collection.</p>
              </div>
           </div>
@@ -120,11 +129,7 @@ const handleSubmit = (e) => {
           </div>
 
           <div className="form-footer">
-             <button type="submit" className="btn-submit-main" onClick={(e) => {
-  e.preventDefault();
-  onAdd(formData);
-  onClose();
-}}>{editData ? "Enregistrer les modifications" : "Ajouter au catalogue"}</button>
+             <button type="submit" className="btn-submit-main">Ajouter au catalogue</button>
           </div>
         </form>
       </div>
