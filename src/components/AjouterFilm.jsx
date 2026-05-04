@@ -21,7 +21,7 @@ export default function AjouterFilm({ isOpen, onClose, onAdd }) {
         genre: "Action",
         directeur: "",
         image: "",
-        note: 0,
+        note: "",
         acteurs: []
       });
     }
@@ -118,13 +118,8 @@ const handleSubmit = (e) => {
               </div>
 
               <label>VOTRE NOTE</label>
-              <div className="rating-stars-input">
-                <i className="ri-star-fill active"></i>
-                <i className="ri-star-fill active"></i>
-                <i className="ri-star-fill active"></i>
-                <i className="ri-star-line"></i>
-                <i className="ri-star-line"></i>
-              </div>
+              <input type="number" min="0" max="5" placeholder="note..." name="note" value={formData.note} onChange={handleChange}/>
+            
             </div>
           </div>
 
