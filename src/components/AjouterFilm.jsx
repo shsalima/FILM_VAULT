@@ -7,7 +7,7 @@ export default function AjouterFilm({ isOpen, onClose, onAdd }) {
 
   const [formData, setFormData] = useState({id: null,
     titre: "", description: "", annee: "", genre: "",
-    directeur: "", image: "", note: 0, acteurs: []
+    directeur: "", image: "", note: 0, acteurs: " "
   });
 
 

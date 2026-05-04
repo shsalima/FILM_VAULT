@@ -1,3 +1,4 @@
+// useEffect bach ndiro action mn be3d render f7al localStograge
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -10,9 +11,11 @@ import TopMovies from "../components/TopsFilm";
 
 import Filter from "../components/FilterFiml";
 
+// smit had technique dyal  ana wast useState ma3titch value khdemt function katsama lazy initialization => l code lidakhm had function kay excute ghie awal mara makay3awdch y excuter fkol render bach mayb9ach y9ra locastorage kola mara
 export default function Home() {
   const [films, setFilms] = useState(() => {
     const savedFilms = localStorage.getItem("films");
+    // localStorage kay stocker sttring hna 7wlana array dyal films l objet y3ni sttring-> object
     return savedFilms ? JSON.parse(savedFilms) : filmsData;
   });
 
@@ -22,16 +25,17 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
  
   const [filterCriteria, setFilterCriteria] = useState({
-    titre: "",
-    genre: "",
-    note: ""
+  
+    genre: ""
+  
   });
-
-
+// drna had useEffect bach nkhaliw data dyal films mstocke 7ta b3ed render
   useEffect(() => {
     localStorage.setItem("films", JSON.stringify(films));
+    // [films]=> dependency array => kat9ol ch7al matbdelt films "awd" dir excution dyal had useEffect
+    
   }, [films]);
-
+// [...films]=> spread operator => copy dyal films
   const topRatedMovie = [...films].sort((a, b) => b.note - a.note)[0];
 
   const openDetails = (film) => {
@@ -44,9 +48,8 @@ export default function Home() {
 
 const filteredFilms = films.filter((film) => {
     return (
-        film.titre.toLowerCase().includes(filterCriteria.titre.toLowerCase()) &&
-        film.genre.toLowerCase().includes(filterCriteria.genre.toLowerCase()) &&
-        (filterCriteria.note === "" || film.note >= Number(filterCriteria.note))
+
+        film.genre.toLowerCase().includes(filterCriteria.genre.toLowerCase()) 
     );
 });
 
@@ -69,20 +72,25 @@ const filteredFilms = films.filter((film) => {
         onOpenModal={() => setIsModalOpen(true)}
         movies={films}
         onSelect={openDetails}
-
-      
-  filterCriteria={filterCriteria} 
-  setFilterCriteria={setFilterCriteria}
+        filterCriteria={filterCriteria} 
+        setFilterCriteria={setFilterCriteria}
       />
 
       <Hero
         topMovie={topRatedMovie}
-        allMovies={films}
         movies={films}
         onSelect={openDetails}
       />
-      <TopMovies movies={films} onSelect={openDetails} />
-      <FilmsCatalog movies={filteredFilms} onSelect={openDetails} />
+
+      <TopMovies 
+      movies={films}
+      onSelect={openDetails}
+       />
+
+      <FilmsCatalog 
+      movies={filteredFilms} 
+      onSelect={openDetails} 
+      />
 
       <DetailsFilms
         film={selectedFilm}

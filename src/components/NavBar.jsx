@@ -8,7 +8,7 @@ export default function NavBar({ onOpenModal }){
                     <h1>FILM <span>VAULT</span> </h1>
                 </div>
                 <button onClick={onOpenModal}>
-                    <img src="" alt="" />
+                  
                    + Ajouter un film
                 </button>
              </nav>
